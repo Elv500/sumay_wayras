@@ -6,23 +6,36 @@ import Navbar from "../components/navbar.astro";
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/images/logo_bloque.png" />
+		<link rel="icon" type="image/svg+xml" href="/images/logo.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Sumaj Wayras</title>
 	</head>
 	<body>
 		
-		<div class="h-full bg-linear-to-r from-gray-950 to-sky-600 static">
+		<div class="h-screen bg-linear-to-r from-gray-950 to-sky-600 static">
+			<!-- Navbar -->
 			<div class="m-8 fixed top-0 left-0 right-0 ">
 				<Navbar />
 			</div>
-			<h1 class="text-3xl font-bold underline">Astro</h1>
-			<div>
-				<img src="/images/logo_bloque.png" alt="Logo Sumaj Wayras" class=" w-auto" />
-				<img src="/images/logo_bloque.png" alt="Logo Sumaj Wayras" class=" w-auto" />
-				<img src="/images/logo_bloque.png" alt="Logo Sumaj Wayras" class=" w-auto" />
-				<img src="/images/logo_bloque.png" alt="Logo Sumaj Wayras" class=" w-auto" />
+
+			<!-- Main Content -->
+			<div class="pt-36 px-8 sm:px-16 md:px-32 lg:px-48">
+
+				<!-- Home -->
+				<div class="flex flex-row items-center justify-center bg-white/10 rounded-3xl shadow-lg p-4">
+					
+					<!-- Text Content Home -->
+					<div class="flex flex-col items-center justify-center space-y-8">
+						<h1 class="font-bold italic text-cyan-700 text-shadow-lg/100 text-center text-4xl  sm:text-4xl md:text-6xl">Sumaj Wayras</h1>
+						<p class="text-cyan-100 text-center max-w-2xl text-shadow-lg/50 text-base sm:text-xl md:text-2xl">
+							Bienvenido al Bloque de Tobas - Sumaj Wayras. Aquí encontrarás recursos, noticias y eventos relacionados con nuestra comunidad.
+						</p>
+					</div>
+					
+					<!-- Image Logo Home -->
+					<img src="/images/logo.png" alt="Logo Sumaj Wayras" class=" w-1/4" />
+				</div>
 			</div>
 		</div>
 	</body>

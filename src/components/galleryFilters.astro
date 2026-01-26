@@ -1,0 +1,77 @@
+---
+const GalleryCategories = [
+    {
+        id: 'all',
+        label: 'Ver Todos',
+    },
+    {
+        id: 'entrada_universitaria',
+        label: 'Entrada Universitaria',
+    },
+    {
+        id: 'virgen_del_amparo',
+        label: 'Virgen del Amparo',
+    },
+    {
+        id: 'memories',
+        label: 'Memories',
+    }
+]
+
+const images = import.meta.glob(
+  "/public/images/gallery/**/*.{jpg,png,jpeg}",
+  { eager: true }
+);
+
+const galleryImages = Object.keys(images).map((path) => {
+  const parts = path.split("/");
+  return {
+    src: path.replace("/public", ""),
+    category: parts[parts.length - 2],
+  };
+});
+---
+
+<div class="flex items-center justify-center py-4 md:py-8 flex-wrap">
+  {GalleryCategories.map((category) => (
+    <button
+      type="button"
+      data-filter={category.id}
+      class="filter-btn hover:border-default bg-white/5 focus:ring-2 focus:outline-none focus:ring-white focus:text-white rounded-base text-base inset-shadow-sm inset-shadow-white/25 text-white/75 font-medium px-5 py-2.5 text-center me-3 mb-3"
+    >
+      {category.label}
+    </button>
+  ))}
+</div>
+
+<div id="gallery" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+  {galleryImages.map((img) => (
+    <div data-category={img.category}>
+      <img src={img.src} class="w-full h-full object-cover rounded-base shadow-xl/100 " />
+    </div>
+  ))}
+</div>
+
+<script is:inline>
+  const buttons = document.querySelectorAll(".filter-btn");
+  const items = document.querySelectorAll("#gallery > div");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+
+      buttons.forEach(b => b.classList.remove("bg-white/20"));
+      btn.classList.add("bg-white/20");
+
+      items.forEach((item) => {
+        const category = item.dataset.category;
+
+        if (filter === "all" || category === filter) {
+          item.classList.remove("hidden");
+        } else {
+          item.classList.add("hidden");
+        }
+      });
+    });
+  });
+</script>

@@ -19,7 +19,7 @@ import TikTokEmbed from "../components/TikTokEmbed.astro";
 	</head>
 	<body>
 		
-		<div class="h-full bg-linear-to-r from-gray-950 to-sky-600 static">
+		<div class="w-full h-full bg-linear-to-r from-gray-950 to-sky-600 bg-fixed">
 			<!-- Navbar -->
 			<div class="m-8 fixed top-0 left-0 right-0 ">
 				<Navbar />
@@ -37,6 +37,9 @@ import TikTokEmbed from "../components/TikTokEmbed.astro";
 						<p class="text-cyan-100 text-center max-w-2xl text-shadow-lg/50 text-base sm:text-xl md:text-2xl">
 							Bienvenido al Bloque de Tobas - Sumaj Wayras. Rumbo al Corso de Corsos de Cochabamba, <a class="text-cyan-500 text-shadow-lg/100">🎉Carnaval de la Concordia 2026!🎭</a>.
 						</p>
+						<a href="https://wa.me/59170712345?text=Hola%20Sumaj%20Wayras,%20quiero%20más%20información%20sobre%20el%20bloque." target="_blank" class="text-xs sm:text-base inline-block bg-green-500/75 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg text-center">
+						Contáctanos en WhatsApp  
+						</a>
 					</div>
 					
 					<!-- Image Logo Home -->
@@ -46,13 +49,17 @@ import TikTokEmbed from "../components/TikTokEmbed.astro";
 
 				<hr class="text-white m-8">
 
-				<!-- Contacts Cards -->
-				<div class="grid grid-cols-1 h-8 sm:h-auto md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-					<div class="sk-instagram-feed" data-embed-id="25647931"></div><script src="https://widgets.sociablekit.com/instagram-feed/widget.js" defer></script>
-					<InstagramEmbed url="https://www.instagram.com/elviss.ac/" />
-					<InstagramEmbed url="https://www.instagram.com/dannx_rc/" />
+				<!-- Tik Tok Embed -->
+				<div class="flex flex-col gap-4">
 					<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sumaj.wayras" data-unique-id="sumaj.wayras" data-embed-from="embed_page" data-embed-type="creator" style="max-width:780px; min-width:288px;"> <section> <a target="_blank" href="https://www.tiktok.com/@sumaj.wayras?refer=creator_embed">@sumaj.wayras</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
 				</div>
+
+				<!-- Message to WhatsApp -->
+				<div>
+					
+				</div>
+
+				<hr class="text-white m-8">
 
 				<!-- Gallery Container-->
 				<div class="flex flex-col items-center justify-center bg-white/10 rounded-3xl shadow-lg p-4 gap-4">
@@ -61,8 +68,19 @@ import TikTokEmbed from "../components/TikTokEmbed.astro";
 				</div>
 
 			</div>
-		</div>
 
+			<!-- Instagram Embed -->
+			<div class="p-8 gap-4 flex flex-col md:flex-row">
+				<div class="sk-instagram-feed" data-embed-id="25647931"></div><script src="https://widgets.sociablekit.com/instagram-feed/widget.js" defer></script>
+				<div class="sk-instagram-feed" data-embed-id="25647930"></div><script src="https://widgets.sociablekit.com/instagram-feed/widget.js" defer></script>
+			</div>
+			<!-- Instagram Embed 
+			<div>
+				<InstagramEmbed url="https://www.instagram.com/dannx_rc/" />
+			</div> 
+			-->
+		</div>
+		
 		<script async src="https://www.instagram.com/embed.js"></script>
 		<script async src="https://www.tiktok.com/embed.js"></script>
 		<script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>

@@ -1,0 +1,15 @@
+---
+const { url } = Astro.props;
+---
+
+<blockquote
+  class="instagram-media"
+  data-instgrm-permalink={url}
+  data-instgrm-version="14"
+></blockquote>
+
+<script is:inline>
+  if (window.instgrm) {
+    window.instgrm.Embeds.process();
+  }
+</script>

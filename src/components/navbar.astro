@@ -21,9 +21,10 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-            <a href="#" aria-current="page" class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">Inicio</a>
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Contactos</a>
-            <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Galería</a>
+            <a href="#inicio" aria-current="page" class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">Inicio</a>
+            <a href="#corso" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Corso de Corso</a>
+            <a href="#galeria" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Galeria</a>
+            <a href="#redes" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Redes Sociales</a>
           </div>
         </div>
       </div>
@@ -33,10 +34,50 @@
   <el-disclosure id="mobile-menu" hidden class="block sm:hidden">
     <div class="space-y-1 px-2 pt-2 pb-3">
       <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-      <a href="#" aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white">Dashboard</a>
-      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Team</a>
-      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Projects</a>
-      <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Calendar</a>
+      <a href="#inicio" aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white">Inicio</a>
+      <a href="#corso" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Corso de Corso</a>
+      <a href="#galeria" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Galeria</a>
+      <a href="#redes" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Redes Sociales</a>
     </div>
   </el-disclosure>
 </nav>
+
+<script is:inline>
+document.addEventListener("DOMContentLoaded", () => {
+  // Toggle mobile menu
+  const menuButton = document.querySelector('[command="--toggle"][commandfor="mobile-menu"]');
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuButton.addEventListener("click", () => {
+    if (mobileMenu.hasAttribute("hidden")) {
+      mobileMenu.removeAttribute("hidden");
+    } else {
+      mobileMenu.setAttribute("hidden", "");
+    }
+
+    // Alternar iconos hamburger/X
+    menuButton.querySelectorAll("svg").forEach(icon => icon.classList.toggle("hidden"));
+  });
+
+  // Smooth scroll para todos los links del navbar
+  const links = document.querySelectorAll('nav a[href^="#"]');
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        const yOffset = -80; // Altura navbar fija
+        const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+
+        // Si estamos en móvil, cerrar menú
+        if (!mobileMenu.hasAttribute("hidden")) {
+          mobileMenu.setAttribute("hidden", "");
+          menuButton.querySelectorAll("svg").forEach(icon => icon.classList.toggle("hidden"));
+        }
+      }
+    });
+  });
+});
+</script>
